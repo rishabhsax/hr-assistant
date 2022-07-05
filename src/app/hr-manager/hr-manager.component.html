@@ -1,0 +1,67 @@
+<div class="initial-padding initial-top-margin">
+
+  <div style="margin-left: 20px;">
+    <div style="display: inline-flex; padding-right: 10px;"><mat-icon style="font-size: 30px; color: #06066b;">account_circle</mat-icon></div>
+    <div style="display: inline-flex;"><h1 style="font-weight: 500;color: #06066b;">  Hello Rish !!</h1></div>
+  </div>
+  <div>
+    <div>
+      <span class="place-left">Total tickets assigned to you today: {{countTickets}}</span>
+      <span class="place-right">
+        <button mat-raised-button  style="background-color: rgb(1, 1, 100);" (click) = "openAddActionForm()"><strong>Add a New Question to Chat Bot</strong></button>
+      </span>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <mat-form-field style="width: 30%;" appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input matInput type="text" placeholder="Filter" (keyup)="applyFilter($event.target.value)">
+      <mat-icon matSuffix>filter_list</mat-icon>
+      <mat-hint><strong>Hint:</strong> You can filter results</mat-hint>
+    </mat-form-field>
+  </div><br>
+
+  <div class="example-container-table mat-elevation-z8" style="margin-left: 20px; margin-right: 20px; margin-bottom: 5px; border-radius: 7px;">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="ticketId">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-expand" style="font-weight: bolder;">Ticket Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.ticketId}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="query">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-expand" style="font-weight: bolder;">Query</th>
+        <td mat-cell *matCellDef="let element"> {{element.query}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-expand" style="font-weight: bolder;">Status</th>
+        <td mat-cell *matCellDef="let element"> {{element.status}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="candidateId">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-expand" style="font-weight: bolder;">Candidate Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.candidateId}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="response">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-expand" style="font-weight: bolder;">Response</th>
+        <td mat-cell *matCellDef="let element"> {{element.response}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell-xx" style="font-weight: bolder;">Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" style="color: rgb(1, 1, 100);" (click)="openEditActionForm(element)">
+            <mat-icon class="mat-18">edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator style="margin-left: 20px; margin-right: 20px; background-color: #ebf9fd;" [pageSize]="2" [pageSizeOptions]="[2,5,10]"></mat-paginator>
+  <br><br>
+</div>

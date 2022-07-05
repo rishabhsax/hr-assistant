@@ -1,0 +1,128 @@
+<div *ngIf = "flagChatBot" style="float: right; text-align: right;">
+  <button mat-icon-button mat-dialog-close color="primary" style="margin-right: 10px; color: rgb(1, 1, 100);"><mat-icon>close</mat-icon></button>
+</div>
+<h1 mat-dialog-title>{{heading}}</h1>
+
+<div>
+  <mat-dialog-content>
+
+    <!-- CHATBOT CODE-->
+    
+    <div *ngIf="flagChatBot">
+      <iframe
+        allow="microphone;"
+        width="350"
+        height="430"
+        src="https://console.dialogflow.com/api-client/demo/embedded/1a36ddbe-10e4-40f8-9cc6-ca356367f058">
+    </iframe>
+    </div>
+
+    <!-- UPDATE TICKET CODE-->
+    <div *ngIf = "flagEdit">
+
+      <form #userForm="ngForm" novalidate>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ticketId}}</mat-label>
+            <input disabled matInput name="ticketId" placeholder="Ticket Id" [(ngModel)]="answerData.ticketId">
+          </mat-form-field><br>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{status}}</mat-label>
+            <mat-select (selectionChange)="getStatus($event)" required>
+              <mat-option *ngFor = "let state of statusList" [value] = "state">{{state}}</mat-option>
+            </mat-select>
+            <input *ngIf="flagShow" matInput name="status" [(ngModel)]="answerData.status" required>
+          </mat-form-field><br>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{query}}</mat-label>
+            <textarea required disabled matInput name="query" cdkTextareaAutosize #response="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="6" [(ngModel)]="answerData.query"></textarea>
+            <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
+          </mat-form-field><br>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Response</mat-label>
+            <textarea required matInput name="response" cdkTextareaAutosize #response="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="answerData.response"></textarea>
+          </mat-form-field><br>
+        </div>
+        <div style="float: right;">
+          <button mat-raised-button mat-dialog-close color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100);">Cancel</button>
+          <button mat-raised-button mat-dialog-close [disabled]="!userForm.valid" (click)="updateAction()"
+          color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100);">Update Ticket</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- RAISE A TICKET CODE-->
+
+    <div *ngIf="flagTicket">
+      <form #userForm="ngForm" novalidate>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input [disabled] = "flagEdit" matInput name="name" placeholder="Name of candidate" [(ngModel)]="answerData.ticketId">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input [disabled] = "flagEdit" matInput name="email" placeholder="Email Id" [(ngModel)]="answerData.ticketId">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input [disabled] = "flagEdit" matInput name="contact" placeholder="Contact Number with country code" [(ngModel)]="answerData.ticketId">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Candidate Id</mat-label>
+          <input [disabled] = "flagEdit" matInput name="id" placeholder="Candidate ID" [(ngModel)]="answerData.ticketId">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{question}}</mat-label>
+          <textarea required matInput name="question" cdkTextareaAutosize #response="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="questionFed"></textarea>
+          <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
+        </mat-form-field><br>
+        
+        
+      </div>
+        <div style="float: right;">
+          <button mat-raised-button mat-dialog-close color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100);">Cancel</button>
+          <button mat-raised-button mat-dialog-close [disabled]="!userForm.valid" (click)="raiseNewTicket()"
+          color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100); ">Raise a Ticket</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ADD A NEW QUESTION FOR TRAINING CHATBOT-->
+
+    <div *ngIf="flagAdd">
+      <form #userForm="ngForm" novalidate>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{question}}</mat-label>
+            <textarea required matInput name="question" cdkTextareaAutosize #response="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="questionFed"></textarea>
+            <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
+          </mat-form-field><br>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Response</mat-label>
+            <textarea required matInput name="responseFed" cdkTextareaAutosize #response="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="responseFed"></textarea>
+          </mat-form-field><br>
+        </div>
+        <div style="float: right;">
+          <button mat-raised-button mat-dialog-close color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100);">Cancel</button>
+          <button mat-raised-button mat-dialog-close [disabled]="!userForm.valid" (click)="addDataToChatBot()"
+          color="primary" style="margin-right: 10px; background-color: rgb(1, 1, 100); ">Add New Question</button>
+        </div>
+      </form>
+    </div>
+
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,98 @@
+.initial-padding{
+    padding: 10px;
+}
+
+.initial-top-margin{
+   margin-top: 60px;
+   z-index: -1; 
+}
+
+.example-container-table{
+    min-height: 200px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+table{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.mat-header-cell-xx{
+    width: 50px;
+    text-align: center;
+    color: white;
+    background-color: rgb(1, 1, 100);
+    font-size: 14px;
+}
+.mat-header-cell-xx:hover{
+    background-color: rgb(1, 1, 100);
+}
+
+.mat-18{
+    transition: all 0.2s ease-out;
+}
+
+.mat-18:hover{
+    transform: scale(1.2);
+    transition: all 0.2s ease-in;
+}
+
+.mat-header-cell-shrink{
+    width: 140px;
+    text-align: center;
+    color: white;
+    background-color: rgb(1, 1, 100);
+    font-size: 14px;
+}
+.mat-header-cell-shrink:hover{
+    background-color: rgb(1, 1, 142);
+}
+
+.mat-header-cell-expand{
+    width: 200px;
+    text-align: center;
+    color: white;
+    background-color: rgb(1, 1, 100);
+    font-size: 14px;
+}
+
+.mat-header-cell-expand:hover{
+    background-color: rgb(1, 1, 142);
+}
+
+td.mat-cell{
+    text-align: center;
+    font-weight: 500;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.allign{
+    text-align: left;
+}
+.place-right{
+    position: absolute;
+    right: 30px;
+    font-size: 18px;
+    color: white;
+}
+.place-left{
+    position: absolute;
+    left: 30px;
+    font-size: 18px;
+    color: rgb(1, 1, 100);
+}
+.mat-raised-button{
+    background-color: rgb(1, 1, 100);
+    color: white;
+}

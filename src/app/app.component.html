@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar class="mat-toolbar" style="position: fixed; top: 0; width: 100%; z-index: 1;">
+  <span style="text-align:center">
+    <h1>
+      Welcome to {{ title }}
+    </h1>
+  </span>
+  <div *ngIf="flagLogin" style="float:right; text-align: left; margin-left:70%;">
+    <button mat-flat-button [routerLink]="['/login']" color="primary" 
+    style="background-color: rgb(1, 1, 100); width: 165px;">
+    <mat-icon style="font-size: 24px; color: white;">login</mat-icon>&nbsp;&nbsp;&nbsp;Log out</button>
+  </div>
+</mat-toolbar>
+
+<!-- <div *ngIf="ticketFlag">
+  <app-ticket-journey></app-ticket-journey>
+</div>
+<div  *ngIf="!ticketFlag">
+  <app-hr-manager></app-hr-manager>
+</div> -->
+
+<router-outlet></router-outlet>

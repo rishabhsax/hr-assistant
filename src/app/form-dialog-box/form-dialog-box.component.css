@@ -1,0 +1,22 @@
+.mat-raised-button{
+    background-color: #3b4f65;
+    color: white;
+}
+.mat-form-field{
+    width: 400px;
+}
+.float-child {
+    width: 25%;
+    float: left;
+    padding: 20px;
+    /* min-height: 400px; */
+    /* border-right: 1px solid rgb(1, 1, 100); */
+} 
+.mat-18{
+    transition: all 0.2s ease-out;
+}
+
+.mat-18:hover{
+    transform: scale(1.2);
+    transition: all 0.2s ease-in;
+}

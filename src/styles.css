@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #ebf9fd; }
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(1, 1, 100);
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    padding-top: 10px;
+    height: 25px;
+    z-index: 1;
+}
