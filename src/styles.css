@@ -15,3 +15,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     height: 25px;
     z-index: 1;
 }
+
+.success-snackbar{
+    background-color: rgb(191,231,191);
+    border-color: rgb(18,112,59);
+    max-width: 800px;
+    min-width: 305px;
+    border-style: solid;
+    border-radius: 1px;
+    color: rgb(18,112,59);
+    font-weight: bold;
+    position: absolute;
+    bottom: 2%;
+    left: 32%;
+}
+
+.failure-snackbar{
+    background-color: rgb(226,142,142);
+    border-color: rgb(146,36,36);
+    max-width: 800px;
+    min-width: 305px;
+    border-style: solid;
+    border-radius: 1px;
+    color: rgb(146,36,36);
+    font-weight: bold;
+    position: absolute;
+    bottom: 2%;
+    left: 32%;
+}

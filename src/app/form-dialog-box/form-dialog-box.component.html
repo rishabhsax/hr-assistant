@@ -63,28 +63,28 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input [disabled] = "flagEdit" matInput name="name" placeholder="Name of candidate" [(ngModel)]="answerData.ticketId">
+          <input [disabled] = "flagEdit" matInput name="name" placeholder="Name of candidate" [(ngModel)]="candidateName">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input [disabled] = "flagEdit" matInput name="email" placeholder="Email Id" [(ngModel)]="answerData.ticketId">
+          <input [disabled] = "flagEdit" matInput name="email" placeholder="Email Id" [(ngModel)]="emailId">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Contact Number</mat-label>
-          <input [disabled] = "flagEdit" matInput name="contact" placeholder="Contact Number with country code" [(ngModel)]="answerData.ticketId">
+          <input [disabled] = "flagEdit" matInput name="contact" placeholder="Contact Number with country code" [(ngModel)]="contactNumber">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Candidate Id</mat-label>
-          <input [disabled] = "flagEdit" matInput name="id" placeholder="Candidate ID" [(ngModel)]="answerData.ticketId">
+          <input [disabled] = "flagEdit" matInput name="id" placeholder="Candidate ID" [(ngModel)]="id">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>{{question}}</mat-label>
           <textarea required matInput name="question" cdkTextareaAutosize #response="cdkTextareaAutosize"
-          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="questionFed"></textarea>
+          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="queryNew"></textarea>
           <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
         </mat-form-field><br>
         
@@ -106,14 +106,14 @@
           <mat-form-field appearance="outline">
             <mat-label>{{question}}</mat-label>
             <textarea required matInput name="question" cdkTextareaAutosize #response="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="questionFed"></textarea>
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="feedData.questionFed"></textarea>
             <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
           </mat-form-field><br>
           
           <mat-form-field appearance="outline">
             <mat-label>Response</mat-label>
             <textarea required matInput name="responseFed" cdkTextareaAutosize #response="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="responseFed"></textarea>
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="feedData.responseFed"></textarea>
           </mat-form-field><br>
         </div>
         <div style="float: right;">
