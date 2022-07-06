@@ -6,14 +6,14 @@
 <div>
   <mat-dialog-content>
 
-    <!-- CHATBOT CODE-->
+    <!-- CHATBOT CODE mine 1a36ddbe-10e4-40f8-9cc6-ca356367f058-->
     
     <div *ngIf="flagChatBot">
       <iframe
         allow="microphone;"
         width="350"
         height="430"
-        src="https://console.dialogflow.com/api-client/demo/embedded/1a36ddbe-10e4-40f8-9cc6-ca356367f058">
+        src="https://console.dialogflow.com/api-client/demo/embedded/421bf84c-dbb7-4cfc-96c0-938ecea73ac8">
     </iframe>
     </div>
 
@@ -63,27 +63,27 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input [disabled] = "flagEdit" matInput name="name" placeholder="Name of candidate" [(ngModel)]="candidateName">
+          <input [disabled] = "flagEdit" pattern="[a-zA-Z ]*" matInput required name="name" placeholder="Name of candidate" [(ngModel)]="candidateName">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input [disabled] = "flagEdit" matInput name="email" placeholder="Email Id" [(ngModel)]="emailId">
+          <input [disabled] = "flagEdit" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" matInput required name="email" placeholder="Email Id" [(ngModel)]="emailId">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Contact Number</mat-label>
-          <input [disabled] = "flagEdit" matInput name="contact" placeholder="Contact Number with country code" [(ngModel)]="contactNumber">
+          <input [disabled] = "flagEdit" pattern="[1-9][0-9]{9}" matInput name="contact" placeholder="Contact Number with country code" [(ngModel)]="contactNumber">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>Candidate Id</mat-label>
-          <input [disabled] = "flagEdit" matInput name="id" placeholder="Candidate ID" [(ngModel)]="id">
+          <input [disabled] = "flagEdit" pattern="[0-9]" matInput name="id" placeholder="Candidate ID" [(ngModel)]="id">
         </mat-form-field><br>
 
         <mat-form-field appearance="outline">
           <mat-label>{{question}}</mat-label>
-          <textarea required matInput name="question" cdkTextareaAutosize #response="cdkTextareaAutosize"
+          <textarea required matInput name="question" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$" cdkTextareaAutosize #response="cdkTextareaAutosize"
           cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" [(ngModel)]="queryNew"></textarea>
           <!-- <input [disabled] = "flagEdit" matInput name="query" placeholder="Query" [(ngModel)]="answerData.query"> -->
         </mat-form-field><br>

@@ -17,7 +17,7 @@ export class HrManagerComponent implements OnInit {
   dataSource = new MatTableDataSource<ActionsElements>(this.actionsListData);
   formDialogRef: MatDialogRef<FormDialogBoxComponent>;
   @ViewChild(MatPaginator) paginator: MatPaginator;  
-
+  getOpenTicketsUrl ='https://digiassisttickets-r4gvzct3qq-uc.a.run.app/tickets';
 
   applyFilter(filterValue: string){
     filterValue = filterValue.trim();
@@ -68,7 +68,8 @@ export class HrManagerComponent implements OnInit {
   constructor(private httpClient: HttpClient, private sharedService:SharedService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.httpClient.get('assets/getAllTicketsFile.json').subscribe(data =>{
+    console.log("inside ngoninint()")
+    this.httpClient.get(this.getOpenTicketsUrl).subscribe(data =>{
       this.actionsListData = data;
       this.dataSource = new MatTableDataSource<ActionsElements>(this.actionsListData);
       this.countTickets = this.actionsListData.length;

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig, MAT_DIALOG_DATA } from '@angular/material';
 import { FeedData } from '../hr-manager/feedData';
@@ -24,13 +24,17 @@ export class FormDialogBoxComponent implements OnInit {
   status = "Status";
   candidateId = "Candidate Id";
   response = "Response";
-  statusList = ["Unresolved", "Resolved"];
+  statusList = ["UNRESOLVED", "RESOLVED"];
   answerData: QueryData;
   feedData: FeedData;
   questionFed: any;
   responseFed:any;
-  updateResponseUrl = '';
-  trainBotUrl = '';
+  updateResponseUrl = 'https://digiassisttickets-r4gvzct3qq-uc.a.run.app/tickets';
+  trainBotUrl = 'https://assistms-r4gvzct3qq-uc.a.run.app/Intent';
+  raiseTicketUrl = 'https://digiassisttickets-r4gvzct3qq-uc.a.run.app/tickets'
+  headers = new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
+  });
   candidateName ='';
   emailId ='';
   contactNumber = '';
@@ -41,19 +45,19 @@ export class FormDialogBoxComponent implements OnInit {
     let ticketData = {
       "candidateName" : this.candidateId,
       "emailId" : this.emailId,
-      "contactNumber" : this.contactNumber,
-      "id" : this.id,
-      "queryNew" : this.queryNew
+      "phoneNum" : this.contactNumber,
+      "candidateId" : this.id,
+      "query" : this.queryNew
     }
 
     // var result = this.httpClient.post(this.updateResponseUrl, updateData);
-    var result = this.httpClient.post(this.trainBotUrl, ticketData);
+    var result = this.httpClient.post(this.raiseTicketUrl, ticketData, {responseType: 'text', headers:this.headers});
     result.subscribe(
       res => {
         console.log("result",res);
         let config = new MatSnackBarConfig();
         config.duration = 5000;
-        if(res==true){
+        if(res){
           config.panelClass = ['success-snackbar'];
           this.snackbar.open("Response has been recorded successfully", "Dismiss", config);
         }
@@ -70,13 +74,13 @@ export class FormDialogBoxComponent implements OnInit {
     }
 
     // var result = this.httpClient.post(this.updateResponseUrl, updateData);
-    var result = this.httpClient.post(this.trainBotUrl, trainingData);
+    var result = this.httpClient.post(this.trainBotUrl, trainingData, {responseType: 'text', headers:this.headers});
     result.subscribe(
       res => {
         console.log("result",res);
         let config = new MatSnackBarConfig();
         config.duration = 5000;
-        if(res==true){
+        if(res=='Data was inserted successfully'){
           config.panelClass = ['success-snackbar'];
           this.snackbar.open("Response has been recorded successfully", "Dismiss", config);
         }
@@ -89,18 +93,18 @@ export class FormDialogBoxComponent implements OnInit {
 
   updateAction(){
     let updateData = {
-      "ticketId" : this.answerData.ticketId,
+      // "ticketId" : this.answerData.ticketId,
       "response" : this.answerData.response
     }
 
     // var result = this.httpClient.post(this.updateResponseUrl, updateData);
-    var result = this.httpClient.post(this.updateResponseUrl, updateData);
+    var result = this.httpClient.post(this.updateResponseUrl + '/' + this.answerData.ticketId, updateData, {responseType: 'text', headers:this.headers});
     result.subscribe(
       res => {
         console.log("result",res);
         let config = new MatSnackBarConfig();
         config.duration = 5000;
-        if(res==true){
+        if(res){
           config.panelClass = ['success-snackbar'];
           this.snackbar.open("Response has been recorded successfully", "Dismiss", config);
         }
